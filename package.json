@@ -4,12 +4,17 @@
   "description": "Local Weather Forecast App",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server"
   },
   "author": "Michael Gee",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.15.2",
     "request": "^2.81.0",
     "yargs": "^7.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
   }
 }
