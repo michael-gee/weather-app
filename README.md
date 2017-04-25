@@ -6,6 +6,10 @@ Can also display 5 day forecast of any region in the world with given IP address
 
 The application consists of a full front end responsive display along with a CLI tool that returns the weather with an address input.
 
+### Run the Application Locally
+
+    node app
+
 ### CLI Tool
 Navigate to a project folder and git clone the repository.
 

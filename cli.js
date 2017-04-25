@@ -15,10 +15,10 @@ const argv = yargs
 .alias('help', 'h')
 .argv;
 
-var address = encodeURIComponent(argv.a), lon, lat;
+var userAddress = encodeURIComponent(argv.a), lon, lat;
 
 request({
-  url: `https://maps.googleapis.com/maps/api/geocode/json?address=${address}`,
+  url: `https://maps.googleapis.com/maps/api/geocode/json?address=${userAddress}`,
   json: true
 }, (error, response, body) => {
   if(error) console.log(error);

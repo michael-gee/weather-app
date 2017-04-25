@@ -1,11 +1,19 @@
-const weather = require('./func/weather');
+const customApiRequest = require('./func/customApiRequest');
 
-var currentIp = '';
+function getWeather(currentIp) {
+  customApiRequest.getUserIp(currentIp)
+  .then((response) => {
+    return customApiRequest.getCurrentWeather(response);
+  })
+  .then((response) => {
+    return customApiRequest.getFiveDayForcast(response);
+  })
+  .then((response) => {
+    console.log(response);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+}
 
-weather.weatherRequest(currentIp)
-.then((res) => {
-  console.log(res);
-})
-.catch((errorMessage) => {
-  console.log(errorMessage);
-});
+getWeather();
