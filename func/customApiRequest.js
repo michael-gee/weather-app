@@ -15,10 +15,8 @@ module.exports.getUserIp = (userIp) => {
     }, (error, response, body) => {
       if(error) {
         reject(error);
-        return;
       } else if(body.status === "fail"){
         reject("Could not find the location of inputted IP Adress.");
-        return;
       } else if(body.status === "success") {
         resolve({
           latitude: body.lat,
@@ -43,10 +41,8 @@ module.exports.getCurrentWeather = (data) => {
     }, (error, response, body) => {
       if(error) {
         reject(error);
-        return;
       } else if(body.cod != 200) {
          reject(body.message);
-         return;
       } else if(body.cod == 200) {
         data.currentTemp = body.main.temp;
         resolve(data);
@@ -66,10 +62,8 @@ module.exports.getFiveDayForcast = (data) => {
     }, (error,response,body) => {
       if(error) {
         reject(error);
-        return;
       } else if(body.cod !== "200") {
          reject(body.message);
-         return;
       } else if(body.cod === "200") {
         //Add 5 day forecast weather data to the "data" object here
         resolve(data);
