@@ -6,9 +6,10 @@ function getWeather(currentIp) {
     return customApiRequest.getCurrentWeather(response);
   })
   .then((response) => {
-    return customApiRequest.getFiveDayForcast(response);
+    return customApiRequest.getRestOfDayWeather(response);
   })
   .then((response) => {
+    console.log("*******************");
     console.log(response);
   })
   .catch((error) => {

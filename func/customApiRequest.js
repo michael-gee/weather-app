@@ -36,15 +36,18 @@ module.exports.getCurrentWeather = (data) => {
 
   return new Promise((resolve, reject) => {
     request({
-      url: `http://api.openweathermap.org/data/2.5/weather?lat=${data.latitude}&lon=${data.longitude}&units=imperial&APPID=117e8da915f32dc47a7976b186284f7f`,
+      url: `https://api.darksky.net/forecast/ed20cc913806c6b56c99a88cdb09f1fc/${data.latitude},${data.longitude}?exclude=minutely,daily,hourly,flags`,
       json: true
     }, (error, response, body) => {
       if(error) {
         reject(error);
-      } else if(body.cod != 200) {
-         reject(body.message);
-      } else if(body.cod == 200) {
-        data.currentTemp = body.main.temp;
+      } else if(body === "Not Found") {
+         reject("Request not found -- Check for correct API key and valid IP location before making request.");
+      } else {
+        data.weatherSummary = body.currently.summary;
+        data.currentTemp = body.currently.temperature;
+        data.currentApparentTemp = body.currently.apparentTemperature;
+        data.currentWeatherIcon = body.currently.icon;
         resolve(data);
       }
     });
@@ -52,6 +55,27 @@ module.exports.getCurrentWeather = (data) => {
 
 }
 
+module.exports.getRestOfDayWeather = (data) => {
+
+  return new Promise((resolve, reject) => {
+    request({
+      url: `https://api.darksky.net/forecast/ed20cc913806c6b56c99a88cdb09f1fc/${data.latitude},${data.longitude}?exclude=minutely,currently,hourly,flags`,
+      json: true
+    }, (error, response, body) => {
+      if(error) {
+        reject(error);
+      } else if(body === "Not Found") {
+         reject("Request not found -- Check for correct API key and valid IP location before making request.");
+      } else {
+        data.fullDayWeather = body.daily.data;
+        resolve(data);
+      }
+    });
+  });
+
+}
+
+/*
 // ***Fetch 5 Day Forecast Request
 module.exports.getFiveDayForcast = (data) => {
 
@@ -72,3 +96,5 @@ module.exports.getFiveDayForcast = (data) => {
   });
 
 }
+
+*/
