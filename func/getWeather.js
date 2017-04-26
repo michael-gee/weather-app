@@ -9,8 +9,8 @@ module.exports.getWeather = (currentIp) => {
     return customApiRequest.getRestOfDayWeather(response);
   })
   .then((response) => {
-    console.log("*******************");
     console.log(response);
+    return response;
   })
   .catch((error) => {
     console.log(error);
