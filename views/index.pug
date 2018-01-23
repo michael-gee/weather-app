@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  #homepage-container
+    //- cW = Current Weather
+    #cW-title Your Current Weather
+    #cW-wrapper
+      figure.icons
+        canvas(id=`${icon}` width="128" height="128")
+
+      #cW-info
+        ul#cW-list
+          li.cW-item City: #{city}
+          li.cW-item Country: #{country}
+          li.cW-item Region: #{region}
+
+          li.cW-item Weather:
+          li(class="cW-item cW-indent-item") Summary: #{weatherSummary}
+          li(class="cW-item cW-indent-item") Tempurature: #{currentTemp} &#8457;
+
+    

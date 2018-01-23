@@ -5,13 +5,14 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon server"
+    "dev": "nodemon app"
   },
   "author": "Michael Gee",
   "license": "ISC",
   "dependencies": {
-    "bower": "^1.8.0",
+    "body-parser": "^1.18.2",
     "express": "^4.15.2",
+    "pug": "^2.0.0-rc.4",
     "request": "^2.81.0",
     "yargs": "^7.1.0"
   },

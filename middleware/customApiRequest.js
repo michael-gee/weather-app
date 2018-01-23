@@ -5,30 +5,48 @@ module.exports.getUserIp = (userIp) => {
 
   // Check if specific IP address was passed, if not get user's local IP Address
   if(userIp === undefined) {
-    userIp = '';
-  }
-
-  return new Promise((resolve, reject) => {
-    request({
-      url: `http://ip-api.com/json/${userIp}`,
-      json: true
-    }, (error, response, body) => {
-      if(error) {
-        reject(error);
-      } else if(body.status === "fail"){
-        reject("Could not find the location of inputted IP Adress.");
-      } else if(body.status === "success") {
-        resolve({
-          latitude: body.lat,
-          longitude: body.lon,
-          city: body.city,
-          country: body.country,
-          region: body.regionName
-        })
-      }
+    return new Promise((resolve, reject) => {
+      request({
+        url: `http://ip-api.com/json`,
+        json: true
+      }, (error, response, body) => {
+        if (error) {
+          reject(error);
+        } else if (body.status === "fail") {
+          reject("Could not find the location of inputted IP Adress.");
+        } else if (body.status === "success") {
+          resolve({
+            latitude: body.lat,
+            longitude: body.lon,
+            city: body.city,
+            country: body.country,
+            region: body.regionName
+          })
+        }
+      });
     });
-  });
-
+  } else {
+      return new Promise((resolve, reject) => {
+        request({
+          url: `http://ip-api.com/json/${userIp}`,
+          json: true
+        }, (error, response, body) => {
+          if (error) {
+            reject(error);
+          } else if (body.status === "fail") {
+            reject("Could not find the location of inputted IP Adress.");
+          } else if (body.status === "success") {
+            resolve({
+              latitude: body.lat,
+              longitude: body.lon,
+              city: body.city,
+              country: body.country,
+              region: body.regionName
+              })
+            }
+          });
+        });
+    }
 }
 
 // ***Fetch Current Weather Request

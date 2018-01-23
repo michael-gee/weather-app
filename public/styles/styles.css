@@ -1,0 +1,83 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 62.5%;
+  font-family: 'Raleway', Arial, Helvetica, sans-serif;
+  background-color: #eee;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+button:focus { outline:0; }
+
+header {
+  background-color: black;
+  opacity: .85;
+  color: white;
+  padding: 15px 25px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+}
+  #nav-title {
+    margin-right: auto;
+    font-size: 2.5em;
+  }
+  #nav-list {
+    display: flex;
+    list-style-type: none;
+  }
+  .nav-button {
+    border: none;
+    border-radius: 5px; 
+    background-color: white;
+    color: black;
+    font-size: 1.8em;
+    width: 125px;
+    padding: 5px 0;
+    margin: 0 15px;
+  }
+    .nav-button:hover { cursor: pointer; }
+
+#homepage-container {
+  width: 100%;
+}
+  #cW-title {
+    font-size: 3.2em;
+    text-align: center;
+  }
+  /* cW === Current Weather */
+  #cW-wrapper {
+    display: flex;
+    width: 500px;
+    margin: 10px auto;
+    justify-content: space-around;
+    align-items: center;
+  }
+  #cW-list {
+    list-style-type: none;
+    font-size: 1.6em;
+  }
+    .cW-item {
+      padding: 5px 0;
+    }
+    .cW-indent-item {
+      margin-left: 15px;
+    }
+
+#about-container {
+  width: 960px;
+  margin: 0 auto;
+}
+  #about-title {
+    font-size: 3em;
+    text-align: center;
+  }
+  .about-subtitle {
+    font-size: 2.2em;
+  }
+  .about-paragraph {
+    font-size: 1.8em;
+  }
